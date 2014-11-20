@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Cutive';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cutive'), local('Cutive-Regular'), url(http://fonts.gstatic.com/s/cutive/v7/pFCmZyjowpyhKzF9GsVvyevvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Karla'), local('Karla-Regular'), url(http://fonts.gstatic.com/s/karla/v5/QT0qO2FiFD03cwUe_t62t6CWcynf_cDxXwCLxiixG1c.woff) format('woff');
+}
+@font-face {
+  font-family: 'Schoolbell';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Schoolbell'), url(http://fonts.gstatic.com/s/schoolbell/v6/BSqn7FernLolrt-MFco9Wr3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}

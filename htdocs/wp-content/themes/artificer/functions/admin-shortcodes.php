@@ -1828,7 +1828,7 @@ function woo_shortcode_typography_loadgooglefonts ( $font = false , $id = false 
 		if( ! $id ) {
 			$id = 'woo-googlefont-' . sanitize_title( $f );
 		}
-
+		echo "=====>".'http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $f_include . '' ;
 		wp_enqueue_style( $id , 'http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $f_include . '' , array() , '3.6' , 'screen' );
 	} // End IF Statement
 } // End woo_shortcode_typography_loadgooglefonts()

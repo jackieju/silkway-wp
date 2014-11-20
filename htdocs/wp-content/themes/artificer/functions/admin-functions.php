@@ -2335,8 +2335,10 @@ if ( ! function_exists( 'woo_google_webfonts' ) ) {
 				$fonts_and_variants = array_map( 'urlencode', $fonts_and_variants );
 				$fonts = join( '|', $fonts_and_variants );
 
-				$output .= "\n<!-- Google Webfonts -->\n";
-				$output .= '<link href="http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $fonts .'" rel="stylesheet" type="text/css" />'."\n";
+				// $output .= "\n<!-- Google Webfonts -->\n";
+				// $output .= '<link href="http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $fonts .'" rel="stylesheet" type="text/css" />'."\n";
+				
+				$output .= "<link href=\"/fonts.googleapis.com/fonts.css\" />"."\n";
 
 				echo $output;
 			}
@@ -3625,6 +3627,7 @@ if ( ! function_exists( 'wooframework_load_google_fonts' ) ) {
  * @return void
  */
 function wooframework_load_google_fonts() {
+	echo "===>load google fonts";
 	global $woo_used_google_fonts;
 
 	if( $woo_used_google_fonts && is_array( $woo_used_google_fonts ) ) {
@@ -3638,11 +3641,12 @@ function wooframework_load_google_fonts() {
 			}
 			$fonts .= $font;
 		}
-
+		echo "====>#fonts:".$fonts;
 		if( '' != $fonts ) {
 			woo_shortcode_typography_loadgooglefonts( $fonts , 'woo-used-google-fonts' );
 		}
 	}
+		echo "====>load google fonts end";
 } // End wooframework_load_google_fonts()
 }
 add_action( 'wp_footer', 'wooframework_load_google_fonts' );
