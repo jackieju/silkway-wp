@@ -44,12 +44,17 @@ if ( is_woocommerce_activated() ) {
 
 
 function my_avatar($avatar) {
+	return "<img alt='' src='/avatar/default.jpg' class='avatar avatar-64 photo' height='64' width='64' />";
      $tmp = strpos($avatar, 'http');
      $g = substr($avatar, $tmp, strpos($avatar, "'", $tmp) - $tmp);
      $tmp = strpos($g, 'avatar/') + 7;
      $f = substr($g, $tmp, strpos($g, "?", $tmp) - $tmp);
      $w = home_url(); // $w = get_bloginfo('url');
-     $e = preg_replace('/wordpress//', '', ABSPATH) .'avatar/'. $f .'.jpg';
+	error_log("====>ABSPATH:".ABSPATH."\n", 3, "/var/www/silkway/logs/php.log");
+
+     // $e = preg_replace('/wordpress//', '', ABSPATH) .'avatar/'. $f .'.jpg';
+	$e =  ABSPATH .'avatar/'. $f .'.jpg';
+	error_log("====>gravatar:".$e."\n", 3, "/var/www/silkway/logs/php.log");
      $t = 129600; //设定15天, 单位:秒
      if ( empty($default) ) $default = $w. '/avatar/default.jpg';
      if ( !is_file($e) || (time() - filemtime($e)) > $t ) //当头像不存在或者文件超过15天才更新
@@ -57,6 +62,7 @@ function my_avatar($avatar) {
      else
          $avatar = strtr($avatar, array($g => $w.'/avatar/'.$f.'.jpg'));
      if (filesize($e) < 500) copy($default, $e);
+	error_log("===>av:".$avatar."\n", 3, "/var/www/silkway/logs/php.log");
      return $avatar;
 }
 add_filter('get_avatar', 'my_avatar');

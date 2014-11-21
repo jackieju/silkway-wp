@@ -1533,6 +1533,7 @@ class wpdb {
 	 * @return int|false Number of rows affected/selected or false on error
 	 */
 	public function query( $query ) {
+		error_log("===>sql:".$query."\n", 3, "/var/www/silkway/logs/php.log");
 		if ( ! $this->ready )
 			return false;
 

@@ -19,21 +19,26 @@
 
     	<div class="home-intro">
 
-    	<h1 class="stand-first"><?php bloginfo('name'); ?></h1>
+    	<!--<h1 class="stand-first"><?php bloginfo('name'); ?></h1>-->
 
     	<?php if( isset( $woo_options['woo_stand_first'] ) ) {
 			echo '<div class="stand-first">';
 	        echo stripslashes( $woo_options['woo_stand_first'] );
 	        echo '</div>';
 		} ?>
-
+<img src="<?php echo get_template_directory_uri(); ?>/images/silk-head2.jpg" />
 		<?php if ( is_woocommerce_activated() ) { ?>
+<!-- echo "===>1" -->
+
 
     	<ul class="featured-products">
     	<!-- The first 3 -->
     	<?php
+error_log("===>sql1<====\n", 3, "/var/www/silkway/logs/php.log");
 		$args = array( 'post_type' => 'product', 'posts_per_page' => 3, 'meta_query' => array( array('key' => '_visibility','value' => array('catalog', 'visible'),'compare' => 'IN'),array('key' => '_featured','value' => 'yes')) );
 		$loop = new WP_Query( $args );
+		
+error_log("===>sql2<====\n", 3, "/var/www/silkway/logs/php.log");
 
 		while ( $loop->have_posts() ) : $loop->the_post(); $_product;
 
@@ -54,9 +59,12 @@
 
 					</a>
 
-			</li><?php endwhile; ?><!-- the large 1 --><?php
+			</li><?php endwhile; ?><!-- the large 1 -->
+	<?php
+	error_log("===>sql3<====\n", 3, "/var/www/silkway/logs/php.log");
 		$args = array( 'post_type' => 'product', 'posts_per_page' => 1, 'offset' => 3, 'meta_query' => array( array('key' => '_visibility','value' => array('catalog', 'visible'),'compare' => 'IN'),array('key' => '_featured','value' => 'yes')) );
 		$loop = new WP_Query( $args );
+		error_log("===>sql4<====\n", 3, "/var/www/silkway/logs/php.log");
 		while ( $loop->have_posts() ) : $loop->the_post();
 		if ( function_exists( 'get_product' ) ) {
 			$_product = get_product( $loop->post->ID );
@@ -90,7 +98,7 @@
 						<?php if (has_post_thumbnail( $loop->post->ID )) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="'.woocommerce_placeholder_img_src().'" alt="Placeholder" />'; ?>
 
 
-					<h3><?php the_title(); ?> <span class="price"><?php echo $_product->get_price_html(); ?></span></h3>
+					<h3>2222<?php the_title(); ?> <span class="price"><?php echo $_product->get_price_html(); ?></span></h3>
 
 					</a>
 
@@ -101,8 +109,8 @@
 
 		</div><!--/.home-intro-->
 
-		<section id="main" class="<?php if ( $woo_options[ 'woo_display_store_info' ] == "false" ) echo 'fullwidth'; else echo 'col-left'; ?>">
-
+		<section id="main" style="display:none" class="<?php if ( $woo_options[ 'woo_display_store_info' ] == "false" ) echo 'fullwidth'; else echo 'col-left'; ?>">
+		
 		<?php woo_loop_before(); ?>
 
 		<?php

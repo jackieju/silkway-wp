@@ -13,7 +13,9 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache">  
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">  
+	<META HTTP-EQUIV="expires" CONTENT="0">
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 
 <title><?php woo_title(''); ?></title>
@@ -44,7 +46,7 @@
     
     <?php woo_header_before(); ?>
 
-	<header id="header" class="col-full">
+	<header id="header" class="col-full" style="border:0px solid red;height:80px;">
 	    
 	    <hgroup>
 	        
@@ -65,7 +67,7 @@
 		</hgroup>
 
 		<?php if ( isset( $woo_options['woo_ad_top'] ) && $woo_options['woo_ad_top'] == 'true' ) { ?>
-        <div id="topad">
+        <div id="topad" >
 			<?php
 				if ( isset( $woo_options['woo_ad_top_adsense'] ) && $woo_options['woo_ad_top_adsense'] != '' ) {
 					echo stripslashes( $woo_options['woo_ad_top_adsense'] );
