@@ -163,7 +163,6 @@ function image_downsize($id, $size = 'medium') {
 	if ( $out = apply_filters( 'image_downsize', false, $id, $size ) ) {
 		return $out;
 	}
-
 	$img_url = wp_get_attachment_url($id);
 	$meta = wp_get_attachment_metadata($id);
 	$width = $height = 0;
@@ -176,6 +175,7 @@ function image_downsize($id, $size = 'medium') {
 		$width = $intermediate['width'];
 		$height = $intermediate['height'];
 		$is_intermediate = true;
+error_log("==>");
 	}
 	elseif ( $size == 'thumbnail' ) {
 		// fall back to the old thumbnail
@@ -186,6 +186,7 @@ function image_downsize($id, $size = 'medium') {
 			$is_intermediate = true;
 		}
 	}
+error_log("width:".$width);
 	if ( !$width && !$height && isset( $meta['width'], $meta['height'] ) ) {
 		// any other type: use the real image
 		$width = $meta['width'];
@@ -573,7 +574,7 @@ function image_make_intermediate_size( $file, $width, $height, $crop = false ) {
 function image_get_intermediate_size($post_id, $size='thumbnail') {
 	if ( !is_array( $imagedata = wp_get_attachment_metadata( $post_id ) ) )
 		return false;
-
+error_log("size:22".$size);
 	// get the best one for a specified set of dimensions
 	if ( is_array($size) && !empty($imagedata['sizes']) ) {
 		foreach ( $imagedata['sizes'] as $_size => $data ) {
@@ -661,7 +662,6 @@ function wp_get_attachment_image_src($attachment_id, $size='thumbnail', $icon = 
 		return $image;
 
 	$src = false;
-
 	if ( $icon && $src = wp_mime_type_icon($attachment_id) ) {
 		/** This filter is documented in wp-includes/post.php */
 		$icon_dir = apply_filters( 'icon_dir', ABSPATH . WPINC . '/images/media' );
@@ -724,7 +724,7 @@ function wp_get_attachment_image($attachment_id, $size = 'thumbnail', $icon = fa
 		 */
 		$attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
 		$attr = array_map( 'esc_attr', $attr );
-		$html = rtrim("<img $hwstring");
+		$html = rtrim("<img style=\"width:".$width.";height:".$height."\" ".$hwstring);
 		foreach ( $attr as $name => $value ) {
 			$html .= " $name=" . '"' . $value . '"';
 		}

@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header( 'shop' ); ?>
 
+
 	<?php
 		/**
 		 * woocommerce_before_main_content hook
@@ -23,6 +24,8 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
+<?php get_sidebar(); ?>
+<div id="wrapper" style="width:75%;float:right;">
 		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 
 			<h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
@@ -69,6 +72,7 @@ get_header( 'shop' ); ?>
 			<?php wc_get_template( 'loop/no-products-found.php' ); ?>
 
 		<?php endif; ?>
+</div> <!-- wrapper-->
 
 	<?php
 		/**
@@ -87,5 +91,4 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_sidebar' );
 	?>
-
 <?php get_footer( 'shop' ); ?>

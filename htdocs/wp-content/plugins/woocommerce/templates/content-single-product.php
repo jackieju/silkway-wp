@@ -25,9 +25,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 	return;
 	 }
 ?>
-
-<div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+<div itemscope style="width:100%;border:0px solid black" itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
+<div id="summary" style="width:100%;border:0px solid blue;">
 	<?php
 		/**
 		 * woocommerce_before_single_product_summary hook
@@ -39,7 +38,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	?>
 
 	<div class="summary entry-summary">
-
 		<?php
 			/**
 			 * woocommerce_single_product_summary hook
@@ -56,7 +54,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		?>
 
 	</div><!-- .summary -->
-
+</div>
+<div style="clear:both">
+</div>
+<div style="width:100%;">
+<?php get_sidebar(); ?>
+<div style="width:76%;border:0px solid green;position:relative;float:right;">
 	<?php
 		/**
 		 * woocommerce_after_single_product_summary hook
@@ -69,7 +72,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	?>
 
 	<meta itemprop="url" content="<?php the_permalink(); ?>" />
-
 </div><!-- #product-<?php the_ID(); ?> -->
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>
+</div>
+</div>

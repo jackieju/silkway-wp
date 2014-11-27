@@ -111,7 +111,8 @@ if ( ! $credits ) {
 
 echo '<p class="about-description">' . __( 'WordPress is created by a worldwide team of passionate individuals.' ) . "</p>\n";
 
-$gravatar = is_ssl() ? 'https://secure.gravatar.com/avatar/' : 'http://0.gravatar.com/avatar/';
+// $gravatar = is_ssl() ? 'https://secure.gravatar.com/avatar/' : 'http://0.gravatar.com/avatar/';
+$gravatar = is_ssl() ? 'https://notexist/avatar/' : 'http://notexist/avatar/';
 
 foreach ( $credits['groups'] as $group_slug => $group_data ) {
 	if ( $group_data['name'] ) {

@@ -34,6 +34,7 @@ class WC_Template_Loader {
 	 * @return string
 	 */
 	public static function template_loader( $template ) {
+error_log("loading template ". $template);
 		$find = array( 'woocommerce.php' );
 		$file = '';
 
@@ -49,10 +50,13 @@ class WC_Template_Loader {
 
 			if ( is_tax( 'product_cat' ) || is_tax( 'product_tag' ) ) {
 				$file = 'taxonomy-' . $term->taxonomy . '.php';
+				echo "===2";
 			} else {
 				$file = 'archive-product.php';
+				echo "===1";
 			}
 
+				echo "===2";
 			$find[] = 'taxonomy-' . $term->taxonomy . '-' . $term->slug . '.php';
 			$find[] = WC()->template_path() . 'taxonomy-' . $term->taxonomy . '-' . $term->slug . '.php';
 			$find[] = 'taxonomy-' . $term->taxonomy . '.php';
@@ -76,6 +80,7 @@ class WC_Template_Loader {
 			}
 		}
 
+error_log("loaded template ". $template);
 		return $template;
 	}
 

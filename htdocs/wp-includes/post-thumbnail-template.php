@@ -95,6 +95,7 @@ function get_the_post_thumbnail( $post_id = null, $size = 'post-thumbnail', $att
 	 */
 	$size = apply_filters( 'post_thumbnail_size', $size );
 
+error_log("size:".$size);
 	if ( $post_thumbnail_id ) {
 
 		/**
@@ -111,7 +112,9 @@ function get_the_post_thumbnail( $post_id = null, $size = 'post-thumbnail', $att
 		do_action( 'begin_fetch_post_thumbnail_html', $post_id, $post_thumbnail_id, $size );
 		if ( in_the_loop() )
 			update_post_thumbnail_cache();
+error_log("size1:".$size);
 		$html = wp_get_attachment_image( $post_thumbnail_id, $size, false, $attr );
+error_log("html:".$html);
 
 		/**
 		 * Fires after fetching the post thumbnail HTML.
