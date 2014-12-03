@@ -1829,7 +1829,9 @@ function woo_shortcode_typography_loadgooglefonts ( $font = false , $id = false 
 			$id = 'woo-googlefont-' . sanitize_title( $f );
 		}
 
-		wp_enqueue_style( $id , 'http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $f_include . '' , array() , '3.6' , 'screen' );
+		// wp_enqueue_style( $id , 'http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $f_include . '' , array() , '3.6' , 'screen' );
+		wp_enqueue_style( $id , '/fonts.googleapis.com/fonts.css' , array() , '3.6' , 'screen' );
+
 	} // End IF Statement
 } // End woo_shortcode_typography_loadgooglefonts()
 

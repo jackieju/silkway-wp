@@ -34,3 +34,16 @@
   font-weight: 600;
   src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(/fonts.gstatic.com/s/opensans/v10/PRmiXeptR36kaC0GEAetxhyVJL_BP-r1aUfHSUUH87w.woff) format('woff');
 }
+@font-face {
+  font-family: 'Bree Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(/fonts.gstatic.com/s/breeserif/v5/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Schoolbell';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Schoolbell'), url(/fonts.gstatic.com/s/schoolbell/v6/BSqn7FernLolrt-MFco9Wr3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+

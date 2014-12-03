@@ -2336,7 +2336,8 @@ if ( ! function_exists( 'woo_google_webfonts' ) ) {
 				$fonts = join( '|', $fonts_and_variants );
 
 				$output .= "\n<!-- Google Webfonts -->\n";
-				$output .= '<link href="http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $fonts .'" rel="stylesheet" type="text/css" />'."\n";
+				// $output .= '<link href="http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . $fonts .'" rel="stylesheet" type="text/css" />'."\n";
+				$output .= '<link href="/fonts.googleapis.com/fonts.css" rel="stylesheet" type="text/css" />'."\n";
 
 				echo $output;
 			}
